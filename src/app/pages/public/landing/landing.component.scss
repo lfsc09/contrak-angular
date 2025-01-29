@@ -1,0 +1,51 @@
+@use '../../../../styles/breakpoints.scss' as *;
+
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 36px;
+    background-color: var(--mat-sys-background);
+    color: var(--mat-sys-on-background);
+    @include forBreakpoint(expanded large extra) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.login-card {
+    width: 600px;
+    padding: 24px;
+
+    @include forBreakpoint(compact medium) {
+        width: 100%;
+    }
+
+    .logo {
+        font-size: var(--mat-sys-headline-large-size);
+        color: var(--mat-sys-primary);
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 16px 24px 16px;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 0 48px 0;
+}

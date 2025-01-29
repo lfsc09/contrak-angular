@@ -1,10 +1,10 @@
 {
-	"jsxSingleQuote": true,
-	"singleQuote": true,
-	"tabWidth": 4,
-	"printWidth": 180,
-	"useTabs": true,
-	"bracketSameLine": false,
-	"singleAttributePerLine": true,
-	"plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
+    "jsxSingleQuote": true,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "printWidth": 180,
+    "useTabs": false,
+    "bracketSameLine": false,
+    "singleAttributePerLine": true,
+    "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
 }
