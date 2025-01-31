@@ -1,0 +1,19 @@
+name: angular-ci-test-workflow
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+jobs:
+  angular-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Starting Job"
+      - run: echo "Trigger: ${{ github.event_name }}, Branch: ${{ github.ref }}"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Angular CI
+        uses: colbyhill21/angular-full-ci/@v1.0
+        with:
+          testcommand: run test:ci
+      - run: echo "Job complete with status ${{ job.status }}"
