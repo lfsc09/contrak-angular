@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Starting Job"
-      - run: echo "Trigger: ${{ github.event_name }}, Branch: ${{ github.ref }}"
+      - run: echo "Trigger (${{ github.event_name }}), Branch (${{ github.ref }})"
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Angular CI
