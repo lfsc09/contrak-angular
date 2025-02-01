@@ -58,6 +58,17 @@
                                     "with": "src/environments/environment.development.ts"
                                 }
                             ]
+                        },
+                        "faker": {
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.faker.ts"
+                                }
+                            ]
                         }
                     },
                     "defaultConfiguration": "production"
@@ -70,6 +81,9 @@
                         },
                         "development": {
                             "buildTarget": "contrak-angular:build:development"
+                        },
+                        "faker": {
+                            "buildTarget": "contrak-angular:build:faker"
                         }
                     },
                     "defaultConfiguration": "development"
