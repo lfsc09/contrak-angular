@@ -4,10 +4,10 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
+        "start:faker": "ng serve --configuration=faker",
         "build": "ng build",
-        "watch": "ng build --watch --configuration development",
         "test": "ng test --no-watch --browsers=ChromeHeadless",
-        "test-coverage": "ng test --code-coverage --browsers=ChromeHeadless"
+        "test:coverage": "ng test --code-coverage --browsers=ChromeHeadless"
     },
     "private": true,
     "dependencies": {
