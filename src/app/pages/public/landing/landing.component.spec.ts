@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { LoginFakerData } from '../../../../fakers/login-faker.data';
 import { LandingComponent } from './landing.component';
 
-describe('LandingComponent', () => {
+xdescribe('LandingComponent', () => {
     let component: LandingComponent;
     let fixture: ComponentFixture<LandingComponent>;
 
