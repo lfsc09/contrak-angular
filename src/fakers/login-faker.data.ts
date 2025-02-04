@@ -1,4 +1,4 @@
-import { AuthUser } from '../app/infra/gateways/login/login-gateway.model';
+import { AuthenticatedUser } from '../app/infra/gateways/login/login-gateway.model';
 
 interface User {
     name: string;
@@ -19,13 +19,13 @@ export class LoginFakerData {
         },
     ];
 
-    static getUser(email: string, password: string): AuthUser | null {
+    static getUser(email: string, password: string): AuthenticatedUser | null {
         const user = this.users.find((user) => user.email === email && user.password === password);
         if (!user) return null;
         return {
             userName: user.name,
             userEmail: user.email,
-            userTz: user.tz,
+            userTimezone: user.tz,
             roles: [...user.roles],
             tokenExp: new Date().getTime() + 1000 * 60 * 60 * 5,
         };

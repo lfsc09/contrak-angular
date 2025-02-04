@@ -47,10 +47,10 @@ export class LandingComponent implements OnDestroy {
     /**
      * VARS
      */
-    private loginSubscription: Subscription | undefined;
+    private _loginSubscription: Subscription | undefined;
 
     ngOnDestroy(): void {
-        this.loginSubscription?.unsubscribe();
+        this._loginSubscription?.unsubscribe();
     }
 
     /**
@@ -62,7 +62,7 @@ export class LandingComponent implements OnDestroy {
 
     protected handleLoginFormSubmit(submittedForm: any): void {
         if (this.loginForm.valid) {
-            this.loginSubscription = this.loginGatewayService
+            this._loginSubscription = this.loginGatewayService
                 .authenticate({
                     email: this.loginForm.value.email,
                     password: this.loginForm.value.password,

@@ -1,11 +1,24 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LandingComponent } from './pages/public/landing/landing.component';
+import { ThemeManagerService } from './infra/services/theme/theme-manager.service';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, LandingComponent],
-    // template: ` <router-outlet /> `,
-    template: ` <app-landing /> `,
+    imports: [RouterOutlet],
+    template: ` <router-outlet /> `,
 })
-export class AppComponent {}
+export class AppComponent {
+    /**
+     * SERVICES
+     */
+    private readonly _themeManagerService = inject(ThemeManagerService);
+    private readonly _documentService = inject(DOCUMENT);
+
+    constructor() {
+        effect(() => {
+            this._documentService.body.classList.remove(...this._themeManagerService.getUnselectedThemes());
+            this._documentService.body.classList.add(this._themeManagerService.theme());
+        });
+    }
+}

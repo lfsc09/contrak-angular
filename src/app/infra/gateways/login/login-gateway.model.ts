@@ -11,12 +11,12 @@ export type AuthenticateRequest = {
     password: string | null | undefined;
     timezone: string;
 };
-export type AuthenticateResponse = AuthUser | null;
+export type AuthenticateResponse = AuthenticatedUser | null;
 
-export type AuthUser = {
+export type AuthenticatedUser = {
     userName: string;
     userEmail: string;
-    userTz: string;
+    userTimezone: string;
     roles: string[];
     tokenExp: number;
 };
