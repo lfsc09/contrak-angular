@@ -1,0 +1,70 @@
+@use '../../../../../styles/breakpoints.scss' as *;
+
+.nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-card {
+    background-color: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
+    @include forBreakpoint(large extra) {
+        width: 70%;
+        max-width: 1600px;
+    }
+    @include forBreakpoint(compact medium expanded) {
+        width: 100%;
+    }
+}
+
+.nav-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.nav-title {
+    font-size: 2rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--mat-sys-on-surface);
+    user-select: none;
+
+    & > span.nav-title-lead {
+        color: var(--mat-sys-primary);
+    }
+}
+
+.nav-title-breadcrumbs-separator {
+    font-size: 1.25rem;
+    color: var(--mat-sys-on-surface);
+}
+
+.nav-title-breadcrumbs-value {
+    display: inline-block;
+    max-width: 9rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: var(--mat-sys-on-surface);
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}

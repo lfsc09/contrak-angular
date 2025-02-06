@@ -1,0 +1,40 @@
+<nav class="nav-wrapper">
+    <mat-card
+        appearance="raised"
+        class="nav-card"
+    >
+        <mat-card-content class="nav-card-content">
+            <div class="nav-title-wrapper">
+                <span
+                    class="nav-title"
+                    routerLink="/r!"
+                >
+                    Contra<span class="nav-title-lead">K</span>
+                </span>
+                @if (breadcrumbs().length > 0) {
+                    @for (segment of breadcrumbs(); track $index) {
+                        <code class="nav-title-breadcrumbs-separator">/</code>
+                        <span class="nav-title-breadcrumbs-value">{{ segment }}</span>
+                    }
+                }
+            </div>
+            <ng-container *ngIf="tokenExpLeftPercentage$ | async as percent">
+                <button
+                    mat-button
+                    extended
+                    type="button"
+                >
+                    <div class="nav-button">
+                        <mat-progress-spinner
+                            mode="determinate"
+                            diameter="25"
+                            strokeWidth="3"
+                            [value]="percent"
+                        />
+                        Menu
+                    </div>
+                </button>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</nav>
