@@ -1,4 +1,5 @@
 import { AuthenticatedUser } from '../app/infra/gateways/login/login-gateway.model';
+import { environment } from '../environments/environment';
 
 interface User {
     name: string;
@@ -14,7 +15,7 @@ export class LoginFakerData {
             name: 'Master Grill',
             email: 'master@gmail.com',
             password: '123456',
-            roles: [],
+            roles: ['CONTRACTS_ACCESS'],
             tz: '-03:00',
         },
     ];
@@ -27,7 +28,7 @@ export class LoginFakerData {
             userEmail: user.email,
             userTimezone: user.tz,
             roles: [...user.roles],
-            tokenExp: new Date().getTime() + 1000 * 60 * 60 * 5,
+            tokenExp: new Date().getTime() + environment.token.lifespan,
         };
     }
 }

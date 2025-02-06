@@ -94,7 +94,7 @@ describe('IdentityService', () => {
         expect(service['_calculateTokenExpLeft']).toHaveBeenCalled();
     });
 
-    it('[clearrAll()] Should clear User Identity', (done: DoneFn) => {
+    it('[clearrAll()][identity!=null] Should clear User Identity', (done: DoneFn) => {
         TestBed.configureTestingModule({
             providers: [IdentityService],
         });
@@ -109,6 +109,21 @@ describe('IdentityService', () => {
             expect(value).toBe(0);
             done();
         });
+    });
+
+    it('[clearrAll()][identity=null] Should do nothing when attempting to clear User Identity', () => {
+        TestBed.configureTestingModule({
+            providers: [IdentityService],
+        });
+        spyOn(localStorage, 'removeItem');
+        const service = TestBed.inject(IdentityService);
+        service['_identity'].set(null);
+        spyOn<any>(service['_identity'], 'set');
+        spyOn<any>(service['_tokenExpLeft$'], 'next');
+        service.clearAll();
+        expect(service['_identity'].set).not.toHaveBeenCalled();
+        expect(service['_tokenExpLeft$'].next).not.toHaveBeenCalled();
+        expect(localStorage.removeItem).not.toHaveBeenCalled();
     });
 
     it('[_isValid()] Should execute correctly given a "tokenExp" value', () => {

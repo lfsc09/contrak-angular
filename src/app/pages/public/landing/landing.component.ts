@@ -32,11 +32,12 @@ export class LandingComponent implements OnDestroy {
      */
     private readonly _routerService = inject(Router);
     private readonly _formBuilderService = inject(FormBuilder);
-    protected readonly loginGatewayService = inject(tokenLoginGateway);
+    private readonly _loginGatewayService = inject(tokenLoginGateway);
 
     /**
      * SIGNALS
      */
+    protected loading = signal<boolean>(false);
     protected isPasswordVisible = signal<boolean>(false);
     protected emailInputRef = viewChild<ElementRef<HTMLInputElement>>('emailInputRef');
     protected loginForm = this._formBuilderService.group({
@@ -62,7 +63,8 @@ export class LandingComponent implements OnDestroy {
 
     protected handleLoginFormSubmit(submittedForm: any): void {
         if (this.loginForm.valid) {
-            this._loginSubscription = this.loginGatewayService
+            this.loading.set(true);
+            this._loginSubscription = this._loginGatewayService
                 .authenticate({
                     email: this.loginForm.value.email,
                     password: this.loginForm.value.password,
@@ -71,14 +73,16 @@ export class LandingComponent implements OnDestroy {
                 .subscribe({
                     next: (response) => {
                         if (!response) {
+                            this.loading.set(false);
                             this.loginForm.reset();
                             submittedForm.resetForm();
                             this.emailInputRef()?.nativeElement.focus();
                         } else {
-                            this._routerService.navigate(['/r!/home'], { replaceUrl: true });
+                            this._routerService.navigate(['/r!/contracts'], { replaceUrl: true });
                         }
                     },
                     error: (error: Error) => {
+                        this.loading.set(false);
                         console.error(error.message);
                     },
                 });
