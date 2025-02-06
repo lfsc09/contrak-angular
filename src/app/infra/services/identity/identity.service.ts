@@ -48,6 +48,7 @@ export class IdentityService {
     }
 
     clearAll(): void {
+        if (this._identity() === null) return;
         this._identity.set(null);
         this._tokenExpLeft$.next(0);
         localStorage.removeItem(`userIdentity:${environment.host}`);
