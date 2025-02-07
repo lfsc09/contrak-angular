@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ThemeManagerService } from './theme-manager.service';
 
-fdescribe('ThemeManagerService', () => {
+describe('ThemeManagerService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [ThemeManagerService],
@@ -34,7 +34,7 @@ fdescribe('ThemeManagerService', () => {
         service['_theme'].set('light');
         expect(service.getNextThemeInfo()).toEqual({ name: 'dark', icon: 'dark_mode' });
         service['_theme'].set('dark');
-        expect(service.getNextThemeInfo()).toEqual({ name: 'auto', icon: 'computer' });
+        expect(service.getNextThemeInfo()).toEqual({ name: 'auto', icon: 'devices' });
         service['_theme'].set('auto');
         expect(service.getNextThemeInfo()).toEqual({ name: 'light', icon: 'light_mode' });
     });
