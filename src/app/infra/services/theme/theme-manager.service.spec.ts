@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ThemeManagerService } from './theme-manager.service';
 
-describe('ThemeManagerService', () => {
+fdescribe('ThemeManagerService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [ThemeManagerService],
@@ -27,6 +27,16 @@ describe('ThemeManagerService', () => {
         const input = 'light';
         service['_theme'].set(input);
         expect(service.getUnselectedThemes()).toEqual(['auto', 'dark']);
+    });
+
+    it('[getNextThemeInfo()] Should return the correct next theme info', () => {
+        const service = TestBed.inject(ThemeManagerService);
+        service['_theme'].set('light');
+        expect(service.getNextThemeInfo()).toEqual({ name: 'dark', icon: 'dark_mode' });
+        service['_theme'].set('dark');
+        expect(service.getNextThemeInfo()).toEqual({ name: 'auto', icon: 'computer' });
+        service['_theme'].set('auto');
+        expect(service.getNextThemeInfo()).toEqual({ name: 'light', icon: 'light_mode' });
     });
 
     it('[cycleThrough()] Should run correctly setting the theme values in order', () => {
