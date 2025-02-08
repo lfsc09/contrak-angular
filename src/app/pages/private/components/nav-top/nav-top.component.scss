@@ -1,20 +1,13 @@
 @use '../../../../../styles/breakpoints.scss' as *;
 
-.nav-wrapper {
-    position: fixed;
+:host {
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 20;
-    padding: 16px;
+    align-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.nav-card {
-    background-color: var(--mat-sys-surface);
-    color: var(--mat-sys-on-surface);
     @include forBreakpoint(large extra) {
         width: 70%;
         max-width: 1600px;
@@ -22,6 +15,12 @@
     @include forBreakpoint(compact medium expanded) {
         width: 100%;
     }
+}
+
+.nav-card {
+    background-color: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
+    width: 100%;
 }
 
 .nav-card-content {
