@@ -1,0 +1,48 @@
+<mat-drawer-container
+    class="nav-wrapper"
+    hasBackdrop="true"
+>
+    <mat-drawer
+        #drawer
+        mode="push"
+    >
+        <mat-list>
+            <mat-list-item>
+                <span matListItemTitle>{{ navSideService.userInfo().name }}</span>
+                <p matListItemLine>
+                    <span>{{ navSideService.userInfo().email }}</span>
+                </p>
+            </mat-list-item>
+        </mat-list>
+        <mat-nav-list>
+            @for (mainItem of navSideService.mainNavItems(); track mainItem.id) {
+                <a
+                    mat-list-item
+                    [class]="mainItem?.class"
+                    (click)="mainItem?.onClick(drawer)"
+                >
+                    <mat-icon matListItemIcon>{{ mainItem.icon }}</mat-icon>
+                    <span matListItemTitle>{{ mainItem.label }}</span>
+                    @if (mainItem?.meta) {
+                        <span matListItemMeta>{{ mainItem.meta }}</span>
+                    }
+                </a>
+            }
+            <mat-divider class="nav-item-divider"></mat-divider>
+            @for (item of navSideService.navItems(); track item.id) {
+                <a
+                    mat-list-item
+                    [routerLink]="item.route"
+                    routerLinkActive="nav-item-active"
+                    (click)="drawer.close()"
+                >
+                    <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                    <h3 matListItemTitle>{{ item.label }}</h3>
+                </a>
+            }
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content class="nav-drawer-content-wrapper">
+        <ng-content></ng-content>
+    </mat-drawer-content>
+</mat-drawer-container>

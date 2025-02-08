@@ -1,0 +1,60 @@
+@use '@angular/material' as mat;
+
+.nav-wrapper {
+    width: auto;
+    height: 100%;
+}
+
+mat-drawer {
+    @include mat.sidenav-overrides(
+        (
+            container-elevation-shadow: var(--mat-sys-level2),
+            container-shape: var(--mat-sys-corner-none),
+        )
+    );
+}
+
+.nav-drawer-content-wrapper {
+    padding: 16px 32px 32px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+a[mat-list-item] {
+    margin: 8px 0 8px 0;
+    border-radius: 0;
+
+    &:first-child {
+        margin: 0 0 8px 0;
+    }
+
+    &.nav-item-logout {
+        @include mat.list-overrides(
+            (
+                list-item-label-text-color: #ff6467,
+                list-item-leading-icon-color: #ff6467,
+            )
+        );
+    }
+
+    &.nav-item-theme {
+        span[matListItemMeta] {
+            border: 1px solid;
+            border-radius: var(--mat-sys-corner-large);
+            padding: 4px 8px 4px 8px;
+        }
+    }
+}
+
+.nav-item-active {
+    background-color: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+}
+
+.nav-item-divider {
+    margin: 16px auto 16px auto;
+    width: 90%;
+    border-width: 2px;
+}

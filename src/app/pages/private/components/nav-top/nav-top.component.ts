@@ -8,6 +8,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, map, Subscription } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { IdentityService } from '../../../../infra/services/identity/identity.service';
+import { NavSideService } from '../nav-side/nav-side.service';
 
 @Component({
     selector: 'app-nav-top',
@@ -32,7 +33,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
     /**
      * SERVICES
      */
-    // protected readonly navModulesService = inject(NavModulesService);
+    protected readonly navSideService = inject(NavSideService);
     private readonly _identityService = inject(IdentityService);
     private readonly _routerService = inject(Router);
 
