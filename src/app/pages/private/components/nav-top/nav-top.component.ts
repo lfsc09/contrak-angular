@@ -21,7 +21,7 @@ import { NavSideService } from '../nav-side/nav-side.service';
     animations: [
         trigger('pushDown', [
             transition(':enter', [
-                query('nav', [style({ transform: 'translateY(-100%)' }), animate('200ms cubic-bezier(0.35, 0, 0.25, 1)', style({ transform: 'none' }))], {
+                query(':self', [style({ transform: 'translateY(-100%)' }), animate('200ms cubic-bezier(0.35, 0, 0.25, 1)', style({ transform: 'none' }))], {
                     optional: true,
                 }),
             ]),
