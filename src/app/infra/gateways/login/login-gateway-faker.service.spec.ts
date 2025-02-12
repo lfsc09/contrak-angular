@@ -12,6 +12,7 @@ describe('LoginGatewayFakerService', () => {
             providers: [LoginGatewayFakerService],
         });
         service = TestBed.inject(LoginGatewayFakerService);
+        spyOn(console, 'log').and.callFake(() => {});
     });
 
     it('Should start service with "loading=false"', () => {
