@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
-import { LoginFakerData } from '../../../../fakers/login-faker.data';
+import { LoginFakerData } from '../../../../fakers/login/login-faker.data';
 import { LoginGatewayFakerService } from './login-gateway-faker.service';
 import { AuthenticateRequest, AuthenticateResponse } from './login-gateway.model';
 

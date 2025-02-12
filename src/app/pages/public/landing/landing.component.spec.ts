@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { Router } from '@angular/router';
-import { LoginFakerData } from '../../../../fakers/login-faker.data';
+import { LoginFakerData } from '../../../../fakers/login/login-faker.data';
 import { LandingComponent } from './landing.component';
 
 xdescribe('LandingComponent', () => {

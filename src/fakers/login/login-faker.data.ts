@@ -1,5 +1,5 @@
-import { AuthenticatedUser } from '../app/infra/gateways/login/login-gateway.model';
-import { environment } from '../environments/environment';
+import { AuthenticatedUser } from '../../app/infra/gateways/login/login-gateway.model';
+import { environment } from '../../environments/environment';
 
 interface User {
     name: string;
