@@ -1,6 +1,6 @@
 import { delay, Observable, of, throwError } from 'rxjs';
-import { AuthenticateRequest, AuthenticateResponse } from '../app/infra/gateways/login/login-gateway.model';
-import { Faker } from './_default-faker';
+import { AuthenticateRequest, AuthenticateResponse } from '../../app/infra/gateways/login/login-gateway.model';
+import { Faker } from '../_default-faker';
 import { LoginFakerData } from './login-faker.data';
 
 export class LoginFaker extends Faker {

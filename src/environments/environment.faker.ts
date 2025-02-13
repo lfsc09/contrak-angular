@@ -1,3 +1,4 @@
+import { ContractsGatewayFakerService } from '../app/infra/gateways/contracts/contracts-gateway-faker.service';
 import { LoginGatewayFakerService } from '../app/infra/gateways/login/login-gateway-faker.service';
 
 export const environment = {
@@ -11,4 +12,5 @@ export const environment = {
         interval: 5 * 60 * 1000,
     },
     loginGateway: LoginGatewayFakerService,
+    contractsGateway: ContractsGatewayFakerService,
 };

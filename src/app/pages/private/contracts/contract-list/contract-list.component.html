@@ -1,1 +1,115 @@
-<p>contract-list works!</p>
+<mat-card
+    appearance="raised"
+    class="table-card"
+>
+    <mat-card-content>
+        <table
+            mat-table
+            [dataSource]="items"
+            matSort
+            matSortActive="contractNumber"
+            matSortDisableClear
+            matSortDirection="desc"
+        >
+            <ng-container
+                matColumnDef="contractNumber"
+                sticky
+            >
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Contract Nº</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">
+                    <a mat-button href="/r!/contracts/{{ row.contractId }}" target="_blank">{{ row.contractNumber }}</a>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="contractType">
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef>Contract Type</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">{{ row.contractType }}</td>
+            </ng-container>
+            <ng-container matColumnDef="companyName">
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef>Company</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">{{ row.companyName }}</td>
+            </ng-container>
+            <ng-container matColumnDef="companyBu">
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef>BU</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">{{ row.companyBu }}</td>
+            </ng-container>
+            <ng-container matColumnDef="supplierRz">
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef>Supplier</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">{{ row.supplierRz }}</td>
+            </ng-container>
+            <ng-container matColumnDef="supplierCnpj">
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef>CNPJ</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">{{ row.supplierCnpj }}</td>
+            </ng-container>
+            <ng-container matColumnDef="contractExpirationDateUtc">
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Expires At</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">{{ row.contractExpirationDateUtc | date }}</td>
+            </ng-container>
+            <ng-container matColumnDef="contractExpirationDays">
+                <!-- prettier-ignore -->
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Days</th>
+                <!-- prettier-ignore -->
+                <td mat-cell *matCellDef="let row">{{ row.contractExpirationDays }}</td>
+            </ng-container>
+
+            <!-- prettier-ignore -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <!-- prettier-ignore -->
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr *matNoDataRow>
+                <td colspan="9">
+                    <div><span>(^-^*)</span>Nothing to show</div>
+                </td>
+            </tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<mat-card
+    appearance="raised"
+    class="action-card"
+>
+    <mat-card-content>
+        @if (contractsGateway.loading()) {
+            <section class="loading-section">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </section>
+        }
+        <mat-paginator
+            [length]="itemsTotalCount"
+            [pageSize]="50"
+            [pageSizeOptions]="[10, 30, 50, 100]"
+            showFirstLastButtons
+            [disabled]="contractsGateway.loading()"
+            aria-label="Select page of contracts overview"
+        ></mat-paginator>
+        <section class="buttons-section">
+            <button
+                mat-button
+                aria-label="Filter contract"
+            >
+                Filter
+            </button>
+            <a
+                mat-mini-fab
+                aria-label="Create new contract"
+                href="/r!/contracts/new"
+            >
+                <mat-icon>add</mat-icon>
+            </a>
+        </section>
+    </mat-card-content>
+</mat-card>

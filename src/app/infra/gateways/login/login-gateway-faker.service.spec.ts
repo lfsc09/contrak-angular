@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
-import { LoginFakerData } from '../../../../fakers/login-faker.data';
+import { LoginFakerData } from '../../../../fakers/login/login-faker.data';
 import { LoginGatewayFakerService } from './login-gateway-faker.service';
 import { AuthenticateRequest, AuthenticateResponse } from './login-gateway.model';
 
@@ -12,6 +12,7 @@ describe('LoginGatewayFakerService', () => {
             providers: [LoginGatewayFakerService],
         });
         service = TestBed.inject(LoginGatewayFakerService);
+        spyOn(console, 'log').and.callFake(() => {});
     });
 
     it('Should start service with "loading=false"', () => {

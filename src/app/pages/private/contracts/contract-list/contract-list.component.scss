@@ -1,0 +1,106 @@
+@use '../../../../../styles/breakpoints.scss' as *;
+
+:host {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100vh - 120px);
+    @include forBreakpoint(large extra) {
+        width: 95%;
+        max-width: 2560px;
+    }
+    @include forBreakpoint(compact medium expanded) {
+        width: 100%;
+    }
+}
+
+.table-card {
+    flex: 1;
+    min-height: 500px;
+    width: 100%;
+    overflow: auto;
+
+    mat-card-content {
+        height: 100%;
+        padding-top: 0;
+        padding-bottom: 8px;
+    }
+
+    table {
+        height: 100%;
+        background-color: var(--mdc-elevated-card-container-color, var(--mat-sys-surface-container-low));
+
+        tr[mat-header-row] {
+            th[mat-header-cell] {
+                padding-top: 24px;
+                padding-bottom: 24px;
+                border-bottom: 2px solid var(--mat-sys-outline);
+                user-select: none;
+            }
+        }
+
+        tr[mat-row] {
+            td[mat-cell] {
+                border-color: light-dark(#e2e7e4, #232323);
+            }
+
+            &:hover {
+                td[mat-cell] {
+                    background-color: var(--mat-sys-secondary-container);
+                }
+            }
+        }
+
+        tr.mat-mdc-no-data-row {
+            td {
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    font-size: 1.5rem;
+
+                    span {
+                        height: 100%;
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.action-card {
+    margin-bottom: 16px;
+
+    mat-card-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .loading-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            mat-progress-bar {
+                border-top-left-radius: var(--mat-sys-corner-large);
+                border-top-right-radius: var(--mat-sys-corner-large);
+            }
+        }
+
+        .buttons-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+    }
+
+    mat-paginator {
+        width: fit-content;
+        background-color: transparent;
+    }
+}

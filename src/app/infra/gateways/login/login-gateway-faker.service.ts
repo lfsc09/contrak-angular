@@ -1,6 +1,6 @@
 import { inject, Injectable, signal, Signal } from '@angular/core';
 import { catchError, map, Observable, tap } from 'rxjs';
-import { LoginFaker } from '../../../../fakers/login-faker';
+import { LoginFaker } from '../../../../fakers/login/login-faker';
 import { AuthenticateRequest, AuthenticateResponse, LoginGateway } from './login-gateway.model';
 import { IdentityService } from '../../services/identity/identity.service';
 
